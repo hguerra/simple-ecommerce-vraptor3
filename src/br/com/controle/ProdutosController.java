@@ -13,8 +13,15 @@ public class ProdutosController {
 	public ProdutosController(ProdutoDao dao) {
 		this.dao = dao;
 	}
-	
-	public List<Produto> lista(){
+
+	public List<Produto> lista() {
 		return dao.listaTudo();
+	}
+
+	public void adiciona(Produto produto) {
+		dao.salvar(produto);
+	}
+	
+	public void formulario() {
 	}
 }
