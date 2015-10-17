@@ -1,9 +1,11 @@
 package br.com.malandro.controller;
 
+import java.util.List;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
+import br.com.malandro.hibernate.HibernateUtil;
 import br.com.malandro.modelo.Produto;
 
 @Resource
@@ -18,9 +20,24 @@ public class ProdutoController {
 		this.validator = validator;
 	}
 
-	public void acessar() {
+	public void acessar(List<Produto> produtos) {
 
-		result.include("x", 1000);
+		if (produtos == null) {
+
+			produtos = HibernateUtil.buscar(new Produto());
+		}
+
+		result.include("produtos", produtos);
+	}
+
+	public void pesquisar(String pesquisa) {
+
+		Produto produtoFiltro = new Produto();
+		produtoFiltro.setNome(pesquisa);
+
+		List<Produto> produtos = HibernateUtil.buscar(produtoFiltro);
+
+		result.redirectTo(this).acessar(produtos);
 	}
 
 	public void salvar(Produto produto) {
@@ -28,11 +45,11 @@ public class ProdutoController {
 		if (produto.getNome() == null) {
 
 			validator.add(new ValidationMessage("O nome do produto deve estar preenchido", "Erro"));
-			validator.onErrorRedirectTo(this).acessar();
+			validator.onErrorRedirectTo(this).acessar(null);
 		}
 
-		System.out.println(produto.getNome());
-		System.out.println(produto.getPreco());
-		System.out.println();
+		HibernateUtil.salvar(produto);
+
+		result.redirectTo(this).acessar(null);
 	}
 }
