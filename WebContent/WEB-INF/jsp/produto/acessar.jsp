@@ -10,7 +10,7 @@
 
 </div>
 
-<form action='http://localhost:8080/ecommerce/produto/salvar'>
+<form action='salvar'>
 
 	<input type="text" name="produto.nome" placeholder="Nome">
 	
@@ -23,7 +23,7 @@
 <br>
 
 
-<form action='http://localhost:8080/ecommerce/produto/pesquisar'>
+<form action='pesquisar'>
 
 	<input type="text" name="pesquisa" placeholder="Pesquisa">
 	
