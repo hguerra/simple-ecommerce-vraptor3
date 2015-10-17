@@ -11,7 +11,7 @@
 		<property name="hibernate.connection.password"></property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
-		<mapping class="br.com.malandro.modelo.Produto" />
+		<mapping class="br.com.modelo.Produto" />
 
 </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package br.com.malandro.modelo;
+package br.com.modelo;
 
 import java.math.BigDecimal;
 

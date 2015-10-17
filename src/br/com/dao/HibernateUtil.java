@@ -1,12 +1,9 @@
-package br.com.malandro.hibernate;
-
-import java.util.List;
+package br.com.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Example;
 import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
@@ -26,23 +23,7 @@ public class HibernateUtil {
 		return sessionFactory;
 	}
 
-	public static void salvar(Object object) {
-
-		Session session = getSessionfactory().openSession();
-		session.beginTransaction();
-		session.save(object);
-		session.getTransaction().commit();
-		session.close();
-	}
-
-	public static List buscar(Object object) {
-
-		Session session = getSessionfactory().openSession();
-
-		List lista = session.createCriteria(object.getClass()).add(Example.create(object)).list();
-
-		session.close();
-
-		return lista;
+	public static Session getSession() {
+		return getSessionfactory().openSession();
 	}
 }
