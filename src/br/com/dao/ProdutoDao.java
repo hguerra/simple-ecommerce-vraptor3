@@ -16,7 +16,7 @@ public class ProdutoDao {
 		this.session = session;
 	}
 
-	public void salvar(Object object) {
+	public void salva(Object object) {
 		Transaction tx = session.beginTransaction();
 		session.save(object);
 		tx.commit();
