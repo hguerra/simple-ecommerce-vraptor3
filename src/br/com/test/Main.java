@@ -2,14 +2,21 @@ package br.com.test;
 
 import java.util.List;
 
-import br.com.dao.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import br.com.dao.ProdutoDao;
+import br.com.infra.CriadorDeSession;
+import br.com.infra.CriadorDeSessionFactory;
 import br.com.modelo.Produto;
 
 public class Main {
 
 	public static void main(String[] args) {
-		ProdutoDao dao = new ProdutoDao();
+		SessionFactory factory = new CriadorDeSessionFactory().getInstance();
+		Session session = new CriadorDeSession(factory).getInstance();
+		ProdutoDao dao = new ProdutoDao(session);
+		
 		/**
 		 * Carregar todos
 		 */
@@ -37,7 +44,7 @@ public class Main {
 		 * Carregar pelo id
 		 */
 		
-//		Produto p = carregarProduto(1L);
+//		Produto p = dao.carrega(1L);
 //		if(p!=null){
 //			System.out.println(p.getNome());
 //		}else{
@@ -56,11 +63,6 @@ public class Main {
 		// System.out.println("produto editado!");
 		// }
 
-	}
-
-	public static Produto carregarProduto(Long id) {
-		Produto p = (Produto) HibernateUtil.getSession().get(Produto.class, id);
-		return p;
 	}
 
 }

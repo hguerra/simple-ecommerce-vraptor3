@@ -1,17 +1,17 @@
-package br.com.dao;
+package br.com.infra;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import br.com.caelum.vraptor.ioc.Component;
+import br.com.caelum.vraptor.ioc.ComponentFactory;
 
-public class HibernateUtil {
+@Component
+public class CriadorDeSessionFactory implements ComponentFactory<SessionFactory> {
 
-	private static final SessionFactory sessionFactory = buildSessionFactory();
-
-	private static SessionFactory buildSessionFactory() {
-
+	@Override
+	public SessionFactory getInstance() {
 		Configuration configuration = new Configuration().configure();
 		StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
 		serviceRegistryBuilder.applySettings(configuration.getProperties());
@@ -19,11 +19,4 @@ public class HibernateUtil {
 		return configuration.buildSessionFactory(serviceRegistry);
 	}
 
-	public static SessionFactory getSessionfactory() {
-		return sessionFactory;
-	}
-
-	public static Session getSession() {
-		return getSessionfactory().openSession();
-	}
 }

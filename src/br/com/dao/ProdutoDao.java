@@ -10,10 +10,10 @@ import br.com.modelo.Produto;
 
 @Component
 public class ProdutoDao {
-	private Session session;
+	private final Session session;
 
-	public ProdutoDao() {
-		this.session = HibernateUtil.getSession();
+	public ProdutoDao(Session session){
+		this.session = session;
 	}
 
 	public void salvar(Object object) {
