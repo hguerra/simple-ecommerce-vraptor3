@@ -38,6 +38,7 @@ public class ProdutosController {
 			validator.add(new ValidationMessage("Preço precisa ser positivo", "produto.preco"));
 		}
 		validator.onErrorUsePageOf(ProdutosController.class).formulario();
+		
 		dao.salva(produto);
 		result.redirectTo(this).lista();
 	}
@@ -50,8 +51,22 @@ public class ProdutosController {
 	}
 
 	public void altera(Produto produto) {
+		if (produto.getNome() == null || produto.getNome().length() < 3) {
+			validator.add(
+					new ValidationMessage("Nome é obrigatório e precisa ter mais" + " de 3 letras", "produto.nome"));
+		}
+		if (produto.getDescricao() == null || produto.getDescricao().length() > 40) {
+			validator.add(new ValidationMessage("Descrição é obrigatória não pode ter mais" + " que 40 letras",
+					"produto.descricao"));
+		}
+		if (produto.getPreco() == null || produto.getPreco() <= 0) {
+			validator.add(new ValidationMessage("Preço precisa ser positivo", "produto.preco"));
+		}
+		
+		validator.onErrorRedirectTo(ProdutosController.class).edita(produto.getId());
+
 		dao.atualiza(produto);
-		result.redirectTo(this).lista();
+		result.redirectTo(this).edita(produto.getId());
 	}
 
 	public void remove(Long id) {
