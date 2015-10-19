@@ -3,15 +3,18 @@ package br.com.controle;
 import java.util.List;
 
 import br.com.caelum.vraptor.Resource;
+import br.com.caelum.vraptor.Result;
 import br.com.dao.ProdutoDao;
 import br.com.modelo.Produto;
 
 @Resource
 public class ProdutosController {
-	private ProdutoDao dao;
+	private final ProdutoDao dao;
+	private final Result result;
 
-	public ProdutosController(ProdutoDao dao) {
+	public ProdutosController(ProdutoDao dao, Result result) {
 		this.dao = dao;
+		this.result = result;
 	}
 
 	public List<Produto> lista() {
@@ -20,6 +23,7 @@ public class ProdutosController {
 
 	public void adiciona(Produto produto) {
 		dao.salvar(produto);
+		result.redirectTo(this).lista();
 	}
 	
 	public void formulario() {

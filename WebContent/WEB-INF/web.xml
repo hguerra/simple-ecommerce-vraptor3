@@ -31,8 +31,8 @@
 			<description>goodbuy</description>
 			<display-name>Good Buy</display-name>
 			<url-pattern>*.jsp</url-pattern>
-			<include-prelude>/header.jspf</include-prelude>
-			<include-coda>/footer.jspf</include-coda>
+			<include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
+			<include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
 

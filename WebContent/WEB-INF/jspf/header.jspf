@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>Good Buy</title>
-<link href="<c:url value="/goodbuy.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/goodbuy.css"/>" rel="stylesheet"
 	type="text/css" media="screen" />
 <link href="<c:url value="/javascripts/jquery.autocomplete.css"/>"
 	rel="stylesheet" type="text/css" media="screen" />
