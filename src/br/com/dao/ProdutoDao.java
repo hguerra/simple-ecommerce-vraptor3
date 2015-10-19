@@ -42,5 +42,11 @@ public class ProdutoDao {
 		this.session.update(produto);
 		tx.commit();
 	}
-	
+
+	public void remove(Produto produto) {
+		Transaction tx = session.beginTransaction();
+		this.session.delete(produto);
+		tx.commit();
+	}
+
 }
