@@ -33,4 +33,14 @@ public class ProdutoDao {
 		return this.session.createCriteria(Produto.class).list();
 	}
 
+	public Produto carrega(Long id) {
+		return (Produto) this.session.get(Produto.class, id);
+	}
+
+	public void atualiza(Produto produto) {
+		Transaction tx = session.beginTransaction();
+		this.session.update(produto);
+		tx.commit();
+	}
+	
 }
