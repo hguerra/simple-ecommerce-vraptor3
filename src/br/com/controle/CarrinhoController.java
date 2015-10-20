@@ -1,5 +1,6 @@
 package br.com.controle;
 
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
@@ -18,12 +19,16 @@ public class CarrinhoController {
 		this.dao = dao;
 		this.result = result;
 	}
+	
+	@Get("/carrinho")
+	public void visualiza() {
+	}
 
 	@Post("/carrinho")
 	public void adiciona(Item item) {
 		dao.recarrega(item.getProduto());
 		carrinho.adiciona(item);
-		result.redirectTo(ProdutosController.class).lista();
+		result.redirectTo(this).visualiza();
 	}
 
 }
