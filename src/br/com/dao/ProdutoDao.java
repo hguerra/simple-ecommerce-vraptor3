@@ -52,11 +52,15 @@ public class ProdutoDao {
 		this.session.delete(produto);
 		tx.commit();
 	}
-	
+
 	public List<Produto> busca(String nome) {
 		return session.createCriteria(Produto.class)
 				.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE))
 				.list();
+	}
+
+	public void recarrega(Produto produto) {
+		session.refresh(produto);
 	}
 
 }
