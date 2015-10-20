@@ -5,8 +5,10 @@
 			<th>Descrição</th>
 			<th>Preço</th>
 			<th>Comprar</th>
-			<th>Editar</th>
-			<th>Remover</th>
+			<c:if test="${usuarioWeb.logado }">
+				<th>Editar</th>
+				<th>Remover</th>
+			</c:if>
 		</tr>
 	</thead>
 	<tbody>

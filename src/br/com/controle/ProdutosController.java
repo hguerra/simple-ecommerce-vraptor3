@@ -1,5 +1,7 @@
 package br.com.controle;
 
+import static br.com.caelum.vraptor.view.Results.json;
+
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
@@ -11,8 +13,8 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.dao.ProdutoDao;
+import br.com.interceptor.Restrito;
 import br.com.modelo.Produto;
-import static br.com.caelum.vraptor.view.Results.*;
 @Resource
 public class ProdutosController {
 	private final ProdutoDao dao;
@@ -24,16 +26,19 @@ public class ProdutosController {
 		this.result = result;
 		this.validator = validator;
 	}
-
+	
+	@Restrito
 	@Get("/produtos/novo")
 	public void formulario() {
 	}
-
+	
+	@Restrito
 	@Get("/produtos/{id}")
 	public Produto edita(Long id) {
 		return dao.carrega(id);
 	}
 
+	@Restrito
 	@Put("/produtos/{produtos.id}")
 	public void altera(Produto produto) {
 		if (produto.getNome() == null || produto.getNome().length() < 3) {
@@ -58,7 +63,8 @@ public class ProdutosController {
 		dao.atualiza(produto);
 		result.redirectTo(this).lista();
 	}
-
+	
+	@Restrito
 	@Post("/produtos")
 	public void adiciona(Produto produto) {
 		if (produto.getNome() == null || produto.getNome().length() < 3) {
@@ -81,7 +87,8 @@ public class ProdutosController {
 		dao.salva(produto);
 		result.redirectTo(this).lista();
 	}
-
+	
+	@Restrito
 	@Delete("/produtos/{id}")
 	public void remove(Long id) {
 		Produto produto = dao.carrega(id);
