@@ -93,4 +93,9 @@ public class ProdutosController {
 	public List<Produto> lista() {
 		return dao.listaTudo();
 	}
+	
+	public List<Produto> busca(String nome){
+		result.include("nome", nome);
+		return dao.busca(nome);
+	}
 }

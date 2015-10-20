@@ -5,6 +5,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
+
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.modelo.Produto;
 
@@ -12,7 +15,7 @@ import br.com.modelo.Produto;
 public class ProdutoDao {
 	private final Session session;
 
-	public ProdutoDao(Session session){
+	public ProdutoDao(Session session) {
 		this.session = session;
 	}
 
@@ -24,7 +27,8 @@ public class ProdutoDao {
 
 	@SuppressWarnings("rawtypes")
 	public List buscar(Object object) {
-		List lista = session.createCriteria(object.getClass()).add(Example.create(object)).list();
+		List lista = session.createCriteria(object.getClass())
+				.add(Example.create(object)).list();
 		return lista;
 	}
 
@@ -47,6 +51,12 @@ public class ProdutoDao {
 		Transaction tx = session.beginTransaction();
 		this.session.delete(produto);
 		tx.commit();
+	}
+	
+	public List<Produto> busca(String nome) {
+		return session.createCriteria(Produto.class)
+				.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE))
+				.list();
 	}
 
 }
