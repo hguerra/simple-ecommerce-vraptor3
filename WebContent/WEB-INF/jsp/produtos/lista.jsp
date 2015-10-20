@@ -23,15 +23,17 @@
 						<button type="submit">Comprar</button>
 					</form>
 				</td>
-				<td><a href="<c:url value="/produtos/${produto.id}"/>">
-						Editar </a></td>
-				<td>
-					<form action="<c:url value="/produtos/${produto.id}"/>"
-						method="POST">
-						<button class="link" name="_method" value="DELETE">
-							Remover</button>
-					</form>
-				</td>
+				<c:if test="${usuarioWeb.logado }">
+					<td><a href="<c:url value="/produtos/${produto.id}"/>">
+							Editar </a></td>
+					<td>
+						<form action="<c:url value="/produtos/${produto.id}"/>"
+							method="POST">
+							<button class="link" name="_method" value="DELETE">
+								Remover</button>
+						</form>
+					</td>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</tbody>
