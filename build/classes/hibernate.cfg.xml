@@ -5,6 +5,7 @@
 <hibernate-configuration>
 <session-factory>
 		<!--c:\xampp\mysql\bin\mysql.exe -u root-->
+		<!-- /opt/lampp/bin/mysql -u root -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/goodbuy</property>
 		<property name="hibernate.connection.username">root</property>

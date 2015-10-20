@@ -18,6 +18,20 @@ public class Main {
 		ProdutoDao dao = new ProdutoDao(session);
 		
 		/**
+		 * Salvar
+		 */
+		String nome = "Notebook";
+		String descricao = "Gateway i5";
+		Double preco = 1400.00;
+		
+		Produto produto = new Produto();
+		produto.setNome(nome);
+		produto.setDescricao(descricao);
+		produto.setPreco(preco);
+
+		dao.salva(produto);
+		
+		/**
 		 * Carregar todos
 		 */
 		// @SuppressWarnings("unchecked")

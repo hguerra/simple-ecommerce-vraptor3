@@ -23,17 +23,16 @@
 	<div id="erros">
 		<ul>
 			<c:forEach items="${errors}" var="error">
-				<li>${error.category } - ${error.message }</li>
+				<li>${error.category }-${error.message }</li>
 			</c:forEach>
 		</ul>
 	</div>
 	<div id="body">
 		<div id="menu">
 			<ul>
-				<li><a href="<c:url value="/produtos/formulario"/>"> Novo
-						Produto </a></li>
-				<li><a href="<c:url value="/produtos/lista"/>">Lista
-						Produtos</a></li>
+				<li><a href="<c:url value="/produtos/novo"/>"> Novo Produto
+				</a></li>
+				<li><a href="<c:url value="/produtos"/>"> Lista Produtos </a></li>
 			</ul>
 		</div>
 		<div id="content">
