@@ -19,6 +19,11 @@
 				<td>${item.quantidade }</td>
 				<td><fmt:formatNumber type="currency"
 						value="${item.quantidade * item.produto.preco }" /></td>
+				<td>
+					<form action="<c:url value="/carrinho/${s.index}"/>" method="POST">
+						<button class="link" name="_method" value="DELETE">Remover</button>
+					</form>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>

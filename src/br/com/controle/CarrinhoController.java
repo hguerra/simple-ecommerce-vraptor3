@@ -1,5 +1,6 @@
 package br.com.controle;
 
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -29,6 +30,12 @@ public class CarrinhoController {
 		dao.recarrega(item.getProduto());
 		carrinho.adiciona(item);
 		result.redirectTo(this).visualiza();
+	}
+	
+	@Delete("/carrinho/{indiceItem}")
+	public void remove(int indiceItem) {
+	carrinho.remove(indiceItem);
+	result.redirectTo(this).visualiza();
 	}
 
 }
