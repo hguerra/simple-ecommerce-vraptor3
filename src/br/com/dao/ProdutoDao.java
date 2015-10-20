@@ -53,8 +53,9 @@ public class ProdutoDao {
 		tx.commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Produto> busca(String nome) {
-		return session.createCriteria(Produto.class)
+		return (List<Produto>)session.createCriteria(Produto.class)
 				.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE))
 				.list();
 	}

@@ -3,8 +3,8 @@
 "-//Hibernate/Hibernate Configuration DTD//EN"
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-<session-factory>
-		<!--c:\xampp\mysql\bin\mysql.exe -u root-->
+	<session-factory>
+		<!--c:\xampp\mysql\bin\mysql.exe -u root -->
 		<!-- /opt/lampp/bin/mysql -u root -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/goodbuy</property>
@@ -13,6 +13,6 @@
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<mapping class="br.com.modelo.Produto" />
-
-</session-factory>
+		<mapping class="br.com.modelo.Usuario" />
+	</session-factory>
 </hibernate-configuration>
