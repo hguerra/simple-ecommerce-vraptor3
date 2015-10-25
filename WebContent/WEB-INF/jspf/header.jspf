@@ -1,59 +1,128 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Good Buy</title>
-<link href="<c:url value="/css/goodbuy.css"/>" rel="stylesheet"
-	type="text/css" media="screen" />
-<link href="<c:url value="/javascripts/jquery.autocomplete.css"/>"
-	rel="stylesheet" type="text/css" media="screen" />
-<script type="text/javascript"
-	src="<c:url value="/javascripts/jquery-1.3.2.min.js"/>"></script>
-<script type="text/javascript"
-	src="<c:url value="/javascripts/jquery.validate.min.js"/>"></script>
-<script type="text/javascript"
-	src="<c:url value="/javascripts/jquery.autocomplete.min.js"/>"></script>
-<script type="text/javascript"
-	src="<c:url value="/javascripts/jquery.puts.js"/>"></script>
-<fmt:setLocale value="pt_br" />
+<title>E-Commerce</title>
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/jquery-ui.css" rel="stylesheet">
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/component.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/etalage.css">
+<link type="text/css" rel="stylesheet" href="css/easy-responsive-tabs.css" />
+<link href="css/owl.carousel.css" rel="stylesheet">
+<!--webfont-->
+<link href='css/font-Yanone+Kaffeesatz.css' rel='stylesheet' type='text/css'>
+<link href='css/font-Source+Sans+Pro.css' rel='stylesheet' type='text/css'>
+<link href='css/font-Karla.css' rel='stylesheet' type='text/css'>
+<!-- JavaScript includes -->
+<script src="javascripts/jquery-1.11.3.min.js"></script>
+<script src="javascripts/jquery.etalage.min.js"></script>
+<script type="text/javascript" src="<c:url value="javascripts/jquery.validate.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="javascripts/jquery-ui.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="javascripts/jquery.puts.js"/>"></script>
+<!-- JavaScript Custom Theme -->
+<script src="javascripts/ipresenter.packed.js"></script>
+<script src="javascripts/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript" src="javascripts/move-top.js"></script>
+<script type="text/javascript" src="javascripts/easing.js"></script>
+<script src="javascripts/owl.carousel.js"></script>
+<!-- JavaScript Proj -->
+<script type="text/javascript" src="js-proj/e-commerce-view.js"></script>
 </head>
-
 <body>
-	<div id="header">
-		<div id="usuario">
-			<c:if test="${usuarioWeb.logado}">
-				Olá, ${usuarioWeb.nome }!
-				<a href="<c:url value="/logout"/>">Logout</a>
-			</c:if>
-			<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
-						Você não está logado.
-							<a href="<c:url value="/login"/>">Login</a>
-				<a href="<c:url value="/usuarios/novo"/>">Cadastre-se</a>
-			</c:if>
-		</div>
-		<div id="carrinho">
-			<h3>
-				<a href="<c:url value="/carrinho"/>">Meu carrinho:</a>
-			</h3>
-			<c:if test="${empty carrinho or carrinho.totalDeItens eq 0 }">
-				<span>Você não possui itens no seu carrinho</span>
-			</c:if>
-			<c:if test="${carrinho.totalDeItens > 0 }">
-				<ul>
-					<li><strong>Itens:</strong> ${carrinho.totalDeItens }</li>
-					<li><strong>Total:</strong> <fmt:formatNumber type="currency"
-							value="${carrinho.total }" /></li>
-				</ul>
-			</c:if>
+	<!-- header-section-starts -->
+	<div id="header" class="user-desc">
+		<div class="container">
+			<ul>
+				<li><a href="checkout.jsp">Checkout</a></li>
+
+				<li><i class="user"></i>
+					<div id="usuario">
+						<c:if test="${usuarioWeb.logado}">
+							OlÃ¡, ${usuarioWeb.nome }!
+							<a href="<c:url value="/logout"/>">Logout</a>
+						</c:if>
+						<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
+									VocÃª nÃ£o estÃ¡ logado.
+										<a href="<c:url value="/login"/>">Login</a>
+							<a href="<c:url value="/usuarios/novo"/>">Cadastre-se</a>
+						</c:if>
+					</div>
+				</li>
+
+				<li><i class="cart"></i>
+					<div id="carrinho">
+						<h3>
+							<a href="<c:url value="/carrinho"/>">Meu carrinho:</a>
+						</h3>
+						<c:if test="${empty carrinho or carrinho.totalDeItens eq 0 }">
+							<span>VocÃª nÃ£o possui itens no seu carrinho</span>
+						</c:if>
+						<c:if test="${carrinho.totalDeItens > 0 }">
+							<ul>
+								<li><strong>Itens:</strong> ${carrinho.totalDeItens }</li>
+								<li><strong>Total:</strong> <fmt:formatNumber type="currency"
+										value="${carrinho.total }" /></li>
+							</ul>
+						</c:if>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
+
+
+	<div class="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="logo">
+					<a href="index.jsp"><img src="images/logo.png" alt="" /></a>
+				</div>
+				<div class="top-menu">
+					<span class="menu"> </span>
+					<ul class="cl-effect-15">
+						<li><a class="active" href="index.jsp">HOME</a></li>
+						<li><a href="products.jsp" data-hover="PRODUCTS">PRODUCTS</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="slider">
+			<div id="ipresenter">
+				<div id="intro" class="step" data-x="0" data-y="0">
+					<img src="images/details.png" />
+					<h2>CHECK OUR LATEST FASHION</h2>
+				</div>
+
+				<div id="capture" class="step" data-x="1100" data-y="1200"
+					data-scale="1.8" data-rotate="180">
+					<img src="images/details.png" />
+					<h2>CHECK OUR LATEST FASHION</h2>
+				</div>
+
+				<div id="view" class="step" data-x="-300" data-y="600"
+					data-scale="0.2" data-rotate="270">
+					<img src="images/details.png" />
+					<h2>CHECK OUR LATEST FASHION</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div id="erros">
-		<ul>
-			<c:forEach items="${errors}" var="error">
-				<li>${error.category }-${error.message }</li>
-			</c:forEach>
-		</ul>
-	</div>
+			<ul>
+				<c:forEach items="${errors}" var="error">
+					<li>${error.category }-${error.message }</li>
+				</c:forEach>
+			</ul>
+		</div>
+
 	<div id="body">
 		<div id="menu">
 			<ul>
@@ -66,26 +135,51 @@
 						<input id="busca" name="nome" />
 					</form> <script type="text/javascript">
 						$("#busca").puts("Busca produtos por nome");
-						$("#busca").autocomplete(
-								'<c:url value="/produtos/busca.json"/>',
-								{
-									dataType : "json",
-									parse : function(produtos) {
-										return $.map(produtos,
-												function(produto) {
-													return {
-														data : produto,
-														value : produto.nome,
-														result : produto.nome
-													};
-												});
-									},
-									formatItem : function(produto) {
-										return produto.nome + "("
-												+ produto.preco + ")";
-									}
-								});
+						
+						//recebendo valores via ajax
+	                    $.ajax({
+	                        url: '<c:url value="/produtos/get"/>',
+	                        dataType: 'json',
+	                        type: 'GET',
+	                        success: function (data) {
+	                        	console.log('sucesso');
+	                           	console.log(data);
+	                           	var objeto = data[0];
+	                           	var nome = objeto.nome;
+	                           	var preco = objeto.preco;
+	                           	console.log('nome' + nome);
+	                           	console.log('preco' + preco);
+	                        },
+	                        error: function (error) {
+	                         console.log(error);
+	                        }
+	                    });
+		</script></li>
+		
+		<li><form action="<c:url value="/produtos/setTeste"/>">
+						<input id="enviando" name="valor" />
+					</form> <script type="text/javascript">
+					//enviando
+					$('#enviando').submit(function(){ //Primeiro temos que interceptar o evento submit do form
+						//$('#loader').show(); //Aqui para uma simples "perfumaria" exibimos um gif para dizer que está "carregando.."
+						$(this).ajaxSubmit({ //E nessa função enviamos o form ao servidor
+						dataType: 'text', //aqui dizemos que o tipo que receberemos de retorno será um texto vindo do servidor
+						 
+						//Mas poderia ser um JSON ou XML.... continuando
+						success: function(){ //se o servidor retornou "sucesso"
+						//$('#loader').hide(); //escondemos a div que mostra o nosso "carregando"
+						alert('Seja bem-vindo administrador!'); //e mostramos a mensagem seja bem-vindo;
+						},
+						error: function(){ //caso contrário se o servidor retornar um "erro"
+						//$('#loader').hide(); //escondemos a div "carregando..."
+						alert('Usuario e/ou senha nao encontrados!'); //e dizemos que o usuário não foi encontrado
+						}
+						});
+						return false; //aqui retornamos falso para a função submit do form. apenas para evitarmos que o form seja enviado pelo browser.
+						});
+					
 					</script></li>
 			</ul>
 		</div>
+
 		<div id="content">

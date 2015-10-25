@@ -1,9 +1,13 @@
-
-		</div><!-- div content -->
-	</div><!-- div body -->
-	<div id="footer">
-	
+<div class="footer">
+	<div class="container">
+		<div class="col-md-6 copy-rights">
+			<p>
+				&copy; 2015 by Heitor & Isabela
+			</p>
+		</div>
+		<div class="clearfix"></div>
 	</div>
-
+</div>
+<!-- footer-section-ends -->
 </body>
 </html>

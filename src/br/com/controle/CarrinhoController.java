@@ -20,7 +20,7 @@ public class CarrinhoController {
 		this.dao = dao;
 		this.result = result;
 	}
-	
+
 	@Get("/carrinho")
 	public void visualiza() {
 	}
@@ -31,11 +31,11 @@ public class CarrinhoController {
 		carrinho.adiciona(item);
 		result.redirectTo(this).visualiza();
 	}
-	
+
 	@Delete("/carrinho/{indiceItem}")
 	public void remove(int indiceItem) {
-	carrinho.remove(indiceItem);
-	result.redirectTo(this).visualiza();
+		carrinho.remove(indiceItem);
+		result.redirectTo(this).visualiza();
 	}
 
 }

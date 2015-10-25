@@ -4,8 +4,10 @@ import static br.com.caelum.vraptor.view.Results.json;
 
 import java.util.List;
 
+import br.com.caelum.vraptor.Consumes;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
@@ -15,6 +17,7 @@ import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.dao.ProdutoDao;
 import br.com.interceptor.Restrito;
 import br.com.modelo.Produto;
+
 @Resource
 public class ProdutosController {
 	private final ProdutoDao dao;
@@ -26,12 +29,12 @@ public class ProdutosController {
 		this.result = result;
 		this.validator = validator;
 	}
-	
+
 	@Restrito
 	@Get("/produtos/novo")
 	public void formulario() {
 	}
-	
+
 	@Restrito
 	@Get("/produtos/{id}")
 	public Produto edita(Long id) {
@@ -63,7 +66,7 @@ public class ProdutosController {
 		dao.atualiza(produto);
 		result.redirectTo(this).lista();
 	}
-	
+
 	@Restrito
 	@Post("/produtos")
 	public void adiciona(Produto produto) {
@@ -87,7 +90,7 @@ public class ProdutosController {
 		dao.salva(produto);
 		result.redirectTo(this).lista();
 	}
-	
+
 	@Restrito
 	@Delete("/produtos/{id}")
 	public void remove(Long id) {
@@ -111,4 +114,16 @@ public class ProdutosController {
 		result.use(json()).withoutRoot().from(dao.busca(q))
 				.exclude("id", "descricao").serialize();
 	}
+	
+	@Get("/produtos/get")
+	public void getTeste() {
+		result.use(json()).withoutRoot().from(dao.listaTudo())
+				.exclude("id", "descricao").serialize();
+	}
+
+	public void setTeste(String valor) {
+		System.out.println("Recebido do cliente:" + valor);
+		result.redirectTo(this).lista();
+	}
+	
 }
