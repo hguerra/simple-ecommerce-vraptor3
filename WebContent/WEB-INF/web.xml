@@ -20,7 +20,7 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
-
+	
 	<jsp-config>
 		<jsp-property-group>
 			<description>goodbuy</description>
@@ -30,5 +30,5 @@
 			<include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
-
+	
 </web-app>

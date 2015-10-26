@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
@@ -7,135 +7,153 @@
 <title>E-Commerce</title>
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/jquery-ui.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/bootstrap.css"
+	rel='stylesheet' type='text/css' />
+<link href="<%=request.getContextPath()%>/css/jquery-ui.css"
+	rel="stylesheet">
 <!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/component.css" rel='stylesheet' type='text/css' />
-<link rel="stylesheet" href="css/etalage.css">
-<link type="text/css" rel="stylesheet" href="css/easy-responsive-tabs.css" />
-<link href="css/owl.carousel.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/style.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link href="<%=request.getContextPath()%>/css/demo1.css"
+	rel="stylesheet" type="text/css" media="all" />
+<link href="<%=request.getContextPath()%>/css/component.css"
+	rel='stylesheet' type='text/css' />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/etalage.css">
+<link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/easy-responsive-tabs.css" />
+<link href="<%=request.getContextPath()%>/css/owl.carousel.css"
+	rel="stylesheet">
 <!--webfont-->
-<link href='css/font-Yanone+Kaffeesatz.css' rel='stylesheet' type='text/css'>
-<link href='css/font-Source+Sans+Pro.css' rel='stylesheet' type='text/css'>
-<link href='css/font-Karla.css' rel='stylesheet' type='text/css'>
+<link
+	href='<%=request.getContextPath()%>/css/font-Yanone+Kaffeesatz.css'
+	rel='stylesheet' type='text/css'>
+<link href='<%=request.getContextPath()%>/css/font-Source+Sans+Pro.css'
+	rel='stylesheet' type='text/css'>
+<link href='<%=request.getContextPath()%>/css/font-Karla.css'
+	rel='stylesheet' type='text/css'>
 <!-- JavaScript includes -->
-<script src="javascripts/jquery-1.11.3.min.js"></script>
-<script src="javascripts/jquery.etalage.min.js"></script>
-<script type="text/javascript" src="<c:url value="javascripts/jquery.validate.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="javascripts/jquery-ui.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="javascripts/jquery.puts.js"/>"></script>
+<script
+	src="<%=request.getContextPath()%>/javascripts/jquery-1.11.3.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/javascripts/jquery.etalage.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/javascripts/jquery.validate.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/javascripts/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/javascripts/jquery.puts.js"></script>
 <!-- JavaScript Custom Theme -->
-<script src="javascripts/ipresenter.packed.js"></script>
-<script src="javascripts/easyResponsiveTabs.js" type="text/javascript"></script>
-<script type="text/javascript" src="javascripts/move-top.js"></script>
-<script type="text/javascript" src="javascripts/easing.js"></script>
-<script src="javascripts/owl.carousel.js"></script>
+<script
+	src="<%=request.getContextPath()%>/javascripts/ipresenter.packed.js"></script>
+<script
+	src="<%=request.getContextPath()%>/javascripts/easyResponsiveTabs.js"
+	type="text/javascript"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/javascripts/move-top.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/javascripts/easing.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/javascripts/owl.carousel.js"></script>
 <!-- JavaScript Proj -->
-<script type="text/javascript" src="js-proj/e-commerce-view.js"></script>
-<script type="text/javascript" src="js-proj/e-commerce-model.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js-proj/e-commerce-view.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js-proj/e-commerce-model.js"></script>
 </head>
 <body>
 	<!-- header-section-starts -->
 	<div id="header" class="user-desc">
 		<div class="container">
+			<form action="<c:url value="/produtos/busca"/>"
+				class="navbar-form navbar-left">
+				<div class="input-group input-group-sm" style="max-width: 360px;">
+					<input type="text" class="form-control" placeholder="Buscar"
+						id="busca" name="nome">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
 			<ul>
-				<li><a href="checkout.jsp">Checkout</a></li>
-
-				<li><i class="user"></i>
-					<div id="usuario">
-						<c:if test="${usuarioWeb.logado}">
-							OlÃ¡, ${usuarioWeb.nome }!
-							<a href="<c:url value="/logout"/>">Logout</a>
+			<c:if test="${usuarioWeb.logado}">
+							<li><i class="user"></i><a>Ola, ${usuarioWeb.nome }!</a></li>
+							<li><a href="<c:url value="/logout"/>">Logout</a></li>
 						</c:if>
 						<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
-									VocÃª nÃ£o estÃ¡ logado.
-										<a href="<c:url value="/login"/>">Login</a>
-							<a href="<c:url value="/usuarios/novo"/>">Cadastre-se</a>
-						</c:if>
-					</div>
-				</li>
-
+								<li><a href="<c:url value="/login"/>">Login</a></li>
+								<li><a href="<c:url value="/usuarios/novo"/>">Cadastre-se </a></li>
+			</c:if>
 				<li><i class="cart"></i>
-					<div id="carrinho">
 						<h3>
-							<a href="<c:url value="/carrinho"/>">Meu carrinho:</a>
+							<a href="<c:url value="/carrinho"/>">
+									Carrinho
+									<c:if test="${carrinho.totalDeItens > 0 }">
+										(${carrinho.totalDeItens }) - <fmt:formatNumber
+												type="currency" value="${carrinho.total }"/>
+								</c:if>
+							</a>
 						</h3>
-						<c:if test="${empty carrinho or carrinho.totalDeItens eq 0 }">
-							<span>VocÃª nÃ£o possui itens no seu carrinho</span>
-						</c:if>
-						<c:if test="${carrinho.totalDeItens > 0 }">
-							<ul>
-								<li><strong>Itens:</strong> ${carrinho.totalDeItens }</li>
-								<li><strong>Total:</strong> <fmt:formatNumber type="currency"
-										value="${carrinho.total }" /></li>
-							</ul>
-						</c:if>
-					</div>
-				</li>
+					</li>
 			</ul>
 		</div>
 	</div>
-
-
 	<div class="header">
 		<div class="header-top">
 			<div class="container">
 				<div class="logo">
-					<a href="index.jsp"><img src="images/logo.png" alt="" /></a>
+					<a href="<%=request.getContextPath()%>/index.jsp"><img
+						src="<%=request.getContextPath()%>/images/logo.png" alt="" /></a>
 				</div>
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
 						<li><a class="active" href="index.jsp">HOME</a></li>
-						<li><a href="<c:url value="/produtos"/>" data-hover="PRODUCTS">PRODUCTS</a></li>
+						<li><a href="<c:url value="/produtos"/>">PRODUTOS</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 		<div class="slider">
+								<!-- 
+								LOOP
+								JAVA
+								 -->
 			<div id="ipresenter">
 				<div id="intro" class="step" data-x="0" data-y="0">
-					<img src="images/details.png" />
+					<img src="<%=request.getContextPath()%>/images/details.png" />
 					<h2>CHECK OUR LATEST FASHION</h2>
 				</div>
 
 				<div id="capture" class="step" data-x="1100" data-y="1200"
 					data-scale="1.8" data-rotate="180">
-					<img src="images/details.png" />
+					<img src="<%=request.getContextPath()%>/images/details.png" />
 					<h2>CHECK OUR LATEST FASHION</h2>
 				</div>
 
 				<div id="view" class="step" data-x="-300" data-y="600"
 					data-scale="0.2" data-rotate="270">
-					<img src="images/details.png" />
+					<img src="<%=request.getContextPath()%>/images/details.png" />
 					<h2>CHECK OUR LATEST FASHION</h2>
 				</div>
+								<!-- 
+								LOOP
+								JAVA
+								 -->
 			</div>
 		</div>
 	</div>
 
 	<div id="erros">
-			<ul>
-				<c:forEach items="${errors}" var="error">
-					<li>${error.category }-${error.message }</li>
-				</c:forEach>
-			</ul>
-		</div>
+		<ul>
+			<c:forEach items="${errors}" var="error">
+				<li>${error.category }-${error.message }</li>
+			</c:forEach>
+		</ul>
+	</div>
 
 	<div id="body">
-		<div id="menu">
-			<ul>
-				<c:if test="${usuarioWeb.logado }">
-					<li><a href="<c:url value="/produtos/novo"/>"> Novo
-							Produto </a></li>
-				</c:if>
-				<li><form action="<c:url value="/produtos/busca"/>">
-						<input id="busca" name="nome" />
-					</form></li>				
-			</ul>
-		</div>
-
 		<div id="content">

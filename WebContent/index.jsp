@@ -30,7 +30,7 @@
 								<div class="item">
 									<div onclick="location.href='single.jsp';" class="product-grid">
 										<div class="product-pic">
-											<img src="images/p1.jpg" title="Woman's T - Shirt" />
+											<img src="<%=request.getContextPath()%>/images/p1.jpg" title="Woman's T - Shirt" />
 										</div>
 										<div class="product-pic-info">
 											<h4>
@@ -70,7 +70,7 @@
 										<div onclick="location.href='single.jsp';"
 											class="product-grid">
 											<div class="product-pic">
-												<img src="images/p4.jpg" title="Woman's T - Shirt" />
+												<img src="<%=request.getContextPath()%>/images/p4.jpg" title="Woman's T - Shirt" />
 											</div>
 											<div class="product-pic-info">
 												<h4>
@@ -108,7 +108,7 @@
 											<div onclick="location.href='single.jsp';"
 												class="product-grid">
 												<div class="product-pic">
-													<img src="images/p7.jpg" title="Woman's T - Shirt" />
+													<img src="<%=request.getContextPath()%>/images/p7.jpg" title="Woman's T - Shirt" />
 												</div>
 												<div class="product-pic-info">
 													<h4>

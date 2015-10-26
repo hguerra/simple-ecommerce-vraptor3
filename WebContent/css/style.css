@@ -510,7 +510,6 @@ label {
 	font-size: 1em;
 	color: #333333;
 	-webkit-appearance: none;
-	text-transform: capitalize;
 	background: #FFFFFF;
 	border: 1px solid rgb(231, 231, 231);
 	font-weight: normal;
@@ -519,7 +518,6 @@ label {
 	-webkit-appearance: none;
 	font-family: 'Open Sans', sans-serif;
 	color: #ffffff;
-	text-transform: capitalize;
 	display: inline-block;
 	background:#35c3d9;
 	padding: 10px 20px;
@@ -1370,6 +1368,7 @@ h3.c-head {
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
+
 .btn_form form input[type="submit"]:hover{
 	background: #35c3d9;
 }
