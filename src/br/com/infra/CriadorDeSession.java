@@ -16,24 +16,24 @@ public class CriadorDeSession implements ComponentFactory<Session> {
 
 	public CriadorDeSession(SessionFactory factory) {
 		this.factory = factory;
-		System.out.println("CriadorDeSession");
+		//System.out.println("CriadorDeSession");
 	}
 
 	@PostConstruct
 	public void abre() {
 		this.session = factory.openSession();
-		System.out.println("CriadorDeSession-abre");
+		//System.out.println("CriadorDeSession-abre");
 	}
 
 	@Override
 	public Session getInstance() {
-		System.out.println("CriadorDeSession-getInstance");
+		//System.out.println("CriadorDeSession-getInstance");
 		return this.session;
 	}
 
 	@PreDestroy
 	public void fecha() {
 		this.session.close();
-		System.out.println("CriadorDeSession-fecha");
+		//System.out.println("CriadorDeSession-fecha");
 	}
 }

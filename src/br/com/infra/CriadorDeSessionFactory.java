@@ -26,19 +26,19 @@ public class CriadorDeSessionFactory implements ComponentFactory<SessionFactory>
 
 		this.factory = configuration.buildSessionFactory(serviceRegistry);
 		
-		System.out.println("CriadorDeSessionFactory-abre");
+		//System.out.println("CriadorDeSessionFactory-abre");
 	}
 
 	@Override
 	public SessionFactory getInstance() {
-		System.out.println("CriadorDeSessionFactory-getInstance");
+		//System.out.println("CriadorDeSessionFactory-getInstance");
 		return factory;
 	}
 
 	@PreDestroy
 	public void fecha() {
 		this.factory.close();
-		System.out.println("CriadorDeSessionFactory-fecha");
+		//System.out.println("CriadorDeSessionFactory-fecha");
 	}
 
 }

@@ -89,7 +89,7 @@
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
 						<li><a class="active" href="index.jsp">HOME</a></li>
-						<li><a href="products.jsp" data-hover="PRODUCTS">PRODUCTS</a></li>
+						<li><a href="<c:url value="/produtos"/>" data-hover="PRODUCTS">PRODUCTS</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -132,7 +132,6 @@
 					<li><a href="<c:url value="/produtos/novo"/>"> Novo
 							Produto </a></li>
 				</c:if>
-				<li><a href="<c:url value="/produtos"/>">Lista Produtos</a></li>
 				<li><form action="<c:url value="/produtos/busca"/>">
 						<input id="busca" name="nome" />
 					</form></li>				
