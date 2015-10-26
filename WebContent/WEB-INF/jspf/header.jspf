@@ -110,7 +110,7 @@
 				<div class="top-menu">
 					<span class="menu"> </span>
 					<ul class="cl-effect-15">
-						<li><a class="active" href="index.jsp">HOME</a></li>
+						<li><a class="active" href="<%=request.getContextPath()%>/index.jsp">HOME</a></li>
 						<li><a href="<c:url value="/produtos"/>">PRODUTOS</a></li>
 					</ul>
 				</div>
