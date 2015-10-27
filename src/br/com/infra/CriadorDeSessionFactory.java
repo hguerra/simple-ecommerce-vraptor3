@@ -2,7 +2,6 @@ package br.com.infra;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

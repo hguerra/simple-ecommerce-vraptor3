@@ -1,35 +1,26 @@
-package br.com.test;
+package br.com.old.test;
 
-import java.util.List;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
-import br.com.dao.ProdutoDao;
-import br.com.infra.CriadorDeSession;
-import br.com.infra.CriadorDeSessionFactory;
+import br.com.hibernate.util.HibernateUtil;
+import br.com.modelo.Categoria;
 import br.com.modelo.Produto;
 
 public class Main {
 
 	public static void main(String[] args) {
-		SessionFactory factory = new CriadorDeSessionFactory().getInstance();
-		Session session = new CriadorDeSession(factory).getInstance();
-		ProdutoDao dao = new ProdutoDao(session);
-		
 		/**
 		 * Salvar
 		 */
-		String nome = "Notebook";
-		String descricao = "Gateway i5";
-		Double preco = 1400.00;
+		String nome = "Camiseta";
+		String descricao = "Heroi";
+		Double preco = 35.00;
 		
 		Produto produto = new Produto();
 		produto.setNome(nome);
 		produto.setDescricao(descricao);
 		produto.setPreco(preco);
+		produto.setCategoria(Categoria.ADULTO_MASCULINO);
 
-		dao.salva(produto);
+		HibernateUtil.salvar(produto);
 		
 		/**
 		 * Carregar todos

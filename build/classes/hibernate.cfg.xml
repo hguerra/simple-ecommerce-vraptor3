@@ -12,7 +12,14 @@
 		<property name="hibernate.connection.password"></property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- Mapping -->
 		<mapping class="br.com.modelo.Produto" />
+		<mapping class="br.com.modelo.Categoria" />
+		<mapping class="br.com.modelo.Comentario" />
+		<mapping class="br.com.modelo.Item" />
 		<mapping class="br.com.modelo.Usuario" />
+		<mapping class="br.com.modelo.Mensagem" />
+		<mapping class="br.com.modelo.Compras" />
+		<mapping class="br.com.modelo.Ranking" />
 	</session-factory>
 </hibernate-configuration>
