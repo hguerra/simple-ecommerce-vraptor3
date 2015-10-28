@@ -60,6 +60,8 @@
 	src="<%=request.getContextPath()%>/js-proj/e-commerce-view.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js-proj/e-commerce-model.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js-proj/e-commerce-view-comentarios.js"></script>
 </head>
 <body>
 	<!-- header-section-starts -->
@@ -81,6 +83,8 @@
 			<c:if test="${usuarioWeb.logado}">
 							<li><i class="user"></i><a>Ola, ${usuarioWeb.nome }!</a></li>
 							<li><a href="<c:url value="/logout"/>">Logout</a></li>
+							<li><a href="<c:url value="/mensagem/recebidas"/>">Recebidas</a></li>
+							<li><a href="<c:url value="/mensagem/enviadas"/>">Enviadas</a></li>
 						</c:if>
 						<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
 								<li><a href="<c:url value="/login"/>">Login</a></li>

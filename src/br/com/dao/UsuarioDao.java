@@ -35,5 +35,4 @@ public class UsuarioDao {
 				.add(Restrictions.eq("senha", usuario.getSenha()))
 				.uniqueResult();
 	}
-
 }

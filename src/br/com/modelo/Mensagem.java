@@ -1,13 +1,12 @@
 package br.com.modelo;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import br.com.util.Util;
 
 @Entity
 @Table(name = "MENSAGEM")
@@ -30,7 +29,7 @@ public class Mensagem implements Comparable<Mensagem> {
 	private String usuarioId;
 
 	public Mensagem(String mensagem, String usuarioId, String destinatarioId) {
-		this.data = dataCriacao();
+		this.data = Util.dataCriacao();
 		this.mensagem = mensagem;
 		this.usuarioId = usuarioId;
 		this.destinatarioId = destinatarioId;
@@ -78,10 +77,6 @@ public class Mensagem implements Comparable<Mensagem> {
 
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
-	}
-
-	public String dataCriacao() {
-		return new SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(new Date());
 	}
 
 	@Override

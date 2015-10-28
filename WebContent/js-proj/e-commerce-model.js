@@ -47,11 +47,11 @@ $(document).ready(function() {
 	    	$(tag).attr(data).addClass(classCss).text(mensagem).appendTo(tagToAppend);
 	  }
 	 
-	 function ajax_call() {
-		  //your jQuery ajax code
-		 
-	 };
-	var interval = 1000 * 60 * X; // where X is your every X minutes
+//	 function ajax_call() {
+//		  //your jQuery ajax code
+//		 
+//	 };
+//	var interval = 1000 * 60 * X; // where X is your every X minutes
 
 	
 
@@ -64,7 +64,7 @@ $(document).ready(function() {
 		source : lista
 	});
 	
-	//atualizando
-	setInterval(ajax_call, interval);
+//	//atualizando
+//	setInterval(ajax_call, interval);
 	
 });

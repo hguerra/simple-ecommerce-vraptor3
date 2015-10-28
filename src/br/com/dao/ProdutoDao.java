@@ -1,6 +1,8 @@
 package br.com.dao;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,6 +11,10 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.interceptor.Restrito;
+import br.com.modelo.Acao;
+import br.com.modelo.Comentario;
+import br.com.modelo.Historico;
 import br.com.modelo.Produto;
 
 @Component
@@ -63,5 +69,21 @@ public class ProdutoDao {
 	public void recarrega(Produto produto) {
 		session.refresh(produto);
 	}
-
+	/**
+	 * 
+	 * @param acao
+	 */
+	
+	@Restrito
+	public void backup(Acao acao){
+		Set<Produto> atual = new HashSet<Produto>(listaTudo());
+		Historico historico = new Historico(acao, atual);
+		salva(historico);
+	}
+	
+	@Restrito
+	public void comentar(Produto produto, Comentario comentario){
+		produto.getComentarios().add(comentario);
+		atualiza(produto);
+	}
 }

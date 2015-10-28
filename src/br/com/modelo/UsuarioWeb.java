@@ -2,6 +2,7 @@ package br.com.modelo;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;
+import br.com.interceptor.Restrito;
 
 @Component
 @SessionScoped
@@ -23,5 +24,10 @@ public class UsuarioWeb {
 	public void logout() {
 		this.logado = null;
 
+	}
+	
+	@Restrito
+	public Usuario getUsuario(){
+		return logado;
 	}
 }

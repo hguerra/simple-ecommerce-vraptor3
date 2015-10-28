@@ -21,5 +21,6 @@
 		<mapping class="br.com.modelo.Mensagem" />
 		<mapping class="br.com.modelo.Compras" />
 		<mapping class="br.com.modelo.Ranking" />
+		<mapping class="br.com.modelo.Historico" />
 	</session-factory>
 </hibernate-configuration>

@@ -14,6 +14,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.dao.ProdutoDao;
 import br.com.interceptor.Restrito;
+import br.com.modelo.Comentario;
 import br.com.modelo.Produto;
 
 @Resource
@@ -21,7 +22,7 @@ public class ProdutosController {
 	private final ProdutoDao dao;
 	private final Result result;
 	private final Validator validator;
-
+	
 	public ProdutosController(ProdutoDao dao, Result result, Validator validator) {
 		this.dao = dao;
 		this.result = result;
@@ -116,9 +117,9 @@ public class ProdutosController {
 	public void single(Long id){
 		result.include("produto", dao.carrega(id));
 	}
-
+	
 	/**
-	 * Json Teste
+	 * Json
 	 */
 	@Get("/produtos/get")
 	public void getTeste() {
@@ -129,6 +130,18 @@ public class ProdutosController {
 	public void setTeste(String valor) {
 		System.out.println("Recebido do cliente:" + valor);
 		result.redirectTo(this).lista();
+	}
+	
+	/**
+	 * 
+	 */
+	
+	@Restrito
+	@Post("/produtos/{id}/comentario")
+	public void comentario(Long id, Comentario comentario) {
+		Produto produto = dao.carrega(id);
+		dao.comentar(produto, comentario);
+		result.redirectTo(this).single(produto.getId());
 	}
 	
 }

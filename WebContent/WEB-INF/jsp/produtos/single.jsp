@@ -32,11 +32,21 @@
 								<input type="submit" value="add to cart" title="" />
 							</form>
 							<c:if test="${usuarioWeb.logado }">
-								<a href="<c:url value="/produtos/${produto.id}"/>"><button class="btn btn-warning" style="border-radius: 0%; font-size: 1.10em; padding: 8px 39px;">Editar</button></a>
+								<a href="<c:url value="/produtos/${produto.id}"/>"><button
+										class="btn btn-warning"
+										style="border-radius: 0%; font-size: 1.10em; padding: 8px 39px;">Editar</button></a>
+								<br>
+								<br>
+								<a href="<c:url value="/mensagem/nova"/>"><button
+										class="btn btn-success"
+										style="border-radius: 0%; font-size: 1.10em; padding: 8px 24px;">
+										Mensagem</button></a>
 								<form action="<c:url value="/produtos/${produto.id}"/>"
 									method="POST">
-									<br><button class="btn btn-danger"  style="border-radius: 0%; font-size: 1.10em; padding: 8px 30px;"  name="_method" value="DELETE">
-										Remover</button>
+									<br>
+									<button class="btn btn-danger"
+										style="border-radius: 0%; font-size: 1.10em; padding: 8px 30px;"
+										name="_method" value="DELETE">Remover</button>
 								</form>
 							</c:if>
 						</div>
@@ -58,18 +68,59 @@
 					<font size="5">${produto.descricao }.</font>
 				</div>
 				<div class="tab-content">
-					<!-- 
-								LOOP
-								JAVA
-								 -->
-					<font size="5">Comentarios</font>
-					<!-- 
-								LOOP
-								JAVA
-								 -->
+					<c:forEach items="${produto.comentarios }" var="comentario">
+						<font size="3">Nome: ${comentario.nome}</font><br>
+						<font size="3">Nota: ${comentario.nota}</font><br>
+						<font size="3">Comentario: ${comentario.comentario}</font><br>
+						<hr>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
+		<!-- Comentario -->
+		<c:if test="${usuarioWeb.logado }">
+			<div class="container">
+				<div class="row" style="margin-top: 40px;">
+					<div class="col-md-6">
+						<div class="well well-sm">
+							<div class="text-right">
+								<a class="btn btn-success btn-green" href="#reviews-anchor"
+									id="open-review-box">Comentar</a>
+							</div>
+
+							<div class="row" id="post-review-box" style="display: none;">
+								<div class="col-md-12">
+									<form accept-charset="UTF-8"
+										action="<c:url value="/produtos/${produto.id}/comentario"/>"
+										method="post">
+										<input type="hidden" name="comentario.id"
+											value="${comentario.id }" /> <input type="hidden"
+											name="comentario.nome" value="${usuarioWeb.nome }" /> <input
+											id="ratings-hidden" name="comentario.nota"
+											value="${comentario.nota}" type="hidden">
+										<textarea class="form-control animated" cols="50"
+											id="new-review" placeholder="Digite seu comentario..."
+											rows="5" name="comentario.comentario">${comentario.comentario}</textarea>
+
+										<div class="text-right">
+											<div class="stars starrr" data-rating="0"></div>
+											<a class="btn btn-danger btn-sm" href="#"
+												id="close-review-box"
+												style="display: none; margin-right: 10px;"> <span
+												class="glyphicon glyphicon-remove"></span>Cancel
+											</a>
+											<button class="btn btn-success btn-lg" type="submit">Save</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</c:if>
+		<!-- Comentario -->
 	</div>
 	<div class="clearfix"></div>
 </div>

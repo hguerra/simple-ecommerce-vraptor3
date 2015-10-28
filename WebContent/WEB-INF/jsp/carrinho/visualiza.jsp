@@ -74,6 +74,17 @@
 							type="text/javascript"></script>
 						<script src="<%=request.getContextPath()%>/javascripts/classie.js"
 							type="text/javascript"></script>
+
+						<c:if test="${usuarioWeb.logado}">
+
+							<div class="btn_form">
+								<form action="<c:url value="/carrinho/finalizar"/>"
+									method="POST">
+									<input type="submit" value="Concluir Compra" />
+								</form>
+							</div>
+						</c:if>
+
 					</c:if>
 				</div>
 			</div>

@@ -1,30 +1,21 @@
 <div class="container">
 	<div class="products-page">
 		<div class="product">
-			<div class="product-listy">
-				<h3>Categorias</h3>
-				<!-- 
-				LOOP
-				JAVA
-				-->
-				<ul class="product-list">
-					<li><a href="">T-shirts</a></li>
-					<li><a href="">pants</a></li>
-				</ul>
-				<!-- 
-				/LOOP
-				JAVA
-				-->
-			</div>
+			<c:if test="${usuarioWeb.logado}">
+				<a href="<c:url value="/produtos/novo"/>"><button
+						class="btn btn-info"
+						style="border-radius: 0%; font-size: 1.10em; padding: 8px 30px">Registrar</button></a>
+			</c:if>
 		</div>
 		<div class="new-product">
 			<div class="new-product-top">
 				<ul class="product-top-list">
-					<li><a href="index.jsp">Home</a>&nbsp;<span>&gt;</span></li>
+					<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a>&nbsp;<span>&gt;</span></li>
 					<li><span class="act">Best Sales</span>&nbsp;</li>
 				</ul>
 				<p class="back">
-					<a href="index.jsp">Back to Previous</a>
+					<a href="<%=request.getContextPath()%>/index.jsp">Back to
+						Previous</a>
 				</p>
 				<div class="clearfix"></div>
 			</div>
@@ -32,9 +23,9 @@
 			<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
 				<div class="cbp-vm-options">
 					<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
-						data-view="cbp-vm-view-grid" title="grid">Grade</a> <a
-						href="#" class="cbp-vm-icon cbp-vm-list"
-						data-view="cbp-vm-view-list" title="list">Lista</a>
+						data-view="cbp-vm-view-grid" title="grid">Grade</a> <a href="#"
+						class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list"
+						title="list">Lista</a>
 				</div>
 				<div class="clearfix"></div>
 				<ul>
@@ -44,10 +35,12 @@
 							<div class="view view-first">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="<%=request.getContextPath()%>/images/bb2.jpg" class="img-responsive" alt="" />
+										<img src="<%=request.getContextPath()%>/images/bb2.jpg"
+											class="img-responsive" alt="" />
 										<div class="mask">
 											<div class="info">
-												<a class="cbp-vm-image info" href="<c:url value="/produtos/${produto.id}/single"/>">
+												<a class="cbp-vm-image info"
+													href="<c:url value="/produtos/${produto.id}/single"/>">
 													Quick View </a>
 											</div>
 										</div>
@@ -75,8 +68,11 @@
 					</c:forEach>
 				</ul>
 			</div>
-			<script src="<%=request.getContextPath()%>/javascripts/cbpViewModeSwitch.js" type="text/javascript"></script>
-			<script src="<%=request.getContextPath()%>/javascripts/classie.js" type="text/javascript"></script>
+			<script
+				src="<%=request.getContextPath()%>/javascripts/cbpViewModeSwitch.js"
+				type="text/javascript"></script>
+			<script src="<%=request.getContextPath()%>/javascripts/classie.js"
+				type="text/javascript"></script>
 		</div>
 		<div class="clearfix"></div>
 	</div>
